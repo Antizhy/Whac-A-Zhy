@@ -67,6 +67,8 @@ class ScoreCount {
         this._score = 0;
         this.hitContinCount = 0;
         this._continuous = false;
+        this.element!.innerText = `得分: ${this.score} miss: ${this.miss}`;
+        this.tipsElement!.innerText = '连击可获得更多得分';
     }
 
 }
@@ -187,10 +189,13 @@ window.onload = () => {
     stBtn.onclick = () => {
         stBtn.style.display = 'none';
         bgmPlayer.play();
-        for (let i = 1; i <= 6; i++) {
-            units.push(new HoleUnit(`hole${i}`, player));
+        if (units.length == 0) {
+            for (let i = 1; i <= 6; i++) {
+                units.push(new HoleUnit(`hole${i}`, player));
+            }
+            units.forEach(e => e.init(scoreCount));
         }
-        units.forEach(e => e.init(scoreCount));
+
         let random = new Random();
         let handle = setInterval(() => {
             if (times >= limited) {
@@ -200,6 +205,7 @@ window.onload = () => {
                     stBtn.style.display = 'block';
                     times = 0;
                     scoreCount.clear();
+                    last = -1;
                 }, 2500);
 
             }
