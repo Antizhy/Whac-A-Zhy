@@ -1,0 +1,120 @@
+@screen-width: 360px;
+@screen-height: 720px;
+@hole-width: 64px;
+@hole-height: 64px;
+@hole-border-radius: 64px;
+@image-scale: 20px;
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.view {
+  display: block;
+  position: absolute;
+  width: @screen-width;
+  height: @screen-height;
+  background: #cb7e0b;
+}
+
+button {
+  border: none;
+  padding: 8px 16px;
+  background: #0b6ecb;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 8px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3683cc;
+}
+
+button:active {
+  background: #17558f;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 4px;
+}
+
+.st-btn {
+  position: absolute;
+  left: 32%;
+  top: 50%;
+  font-size: 18pt;
+  
+
+}
+
+.score {
+  display: block;
+  position: absolute;
+  width: @screen-width;
+  height: (@screen-height / 10);
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.2);
+  span {
+    margin-left: 9em;
+    color: #fff;
+  }
+}
+
+.hole {
+  display: block;
+  position: absolute;
+  width: @hole-width;
+  height: @hole-height;
+  transform: scaleX(2) translateX((@hole-width / 4));
+  border-radius: @hole-border-radius;
+  background: #000;
+}
+
+.mimg {
+  width: ((@hole-width - 4px) / 2) + (@image-scale / 2);
+  height: (@hole-width - 4px) + @image-scale;
+  margin-left: 12px;
+  position: absolute;
+  mask-image: url('../assets/mask.png');
+  -webkit-mask-image: url('../assets/mask.png');
+  mask-size: cover;
+  -webkit-mask-size: 155px;
+  mask-position: center 0px;
+  -webkit-mask-position: center 0px;
+  transition: all ease-in-out 0.5s;
+  transform: translateY(30px);
+}
+
+#hole1 {
+  top: 20px;
+  left: 10px;
+}
+
+#hole2 {
+  top: 90px;
+  left: 150px;
+}
+
+#hole3 {
+  top: 200px;
+  left: 72px;
+}
+
+#hole4 {
+  top: 290px;
+  left: 200px;
+}
+
+#hole5 {
+  top: 370px;
+  left: 20px;
+}
+
+#hole6 {
+  top: 510px;
+  left: 100px;
+}
